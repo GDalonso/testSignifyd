@@ -52,7 +52,7 @@ class Customer:
 
     def _older90days(self, date_to_check):
         """
-        why would i save the date of the first purchase just to check this?
+        why would i save the date of the purchases just to check this?
         Problem specifies:
         "So if the account has purchases over 90 days old and no reports of fraud[...]"
 
@@ -133,7 +133,7 @@ def buildAccountHistory(csvLines):
         2021-05-01,joe@signifyd.com,GOOD_HISTORY:1
         2021-10-01,joe@signifyd.com,GOOD_HISTORY:4
         
-        Skipping good history 2 and 3
+        due to the differences in date consolidation it skips good history 2 and 3
         """
         reportLines.append(f"{datetime.strftime(line[0], '%Y-%m-%d')},{customer.email}, {customer.relevantStatus()}")
         customer.addEventToHistory(event_date=line[0], event_type=line[2])
